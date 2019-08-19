@@ -1,7 +1,9 @@
 # Vox-Reader-JS
  A small library for reading vox file format, allows you to get colors, vertices and so on...
+ 
 
-###Preparation for parsing, goal: get buffer vox file
+### Preparation for parsing, goal: get buffer vox file
+
 ```js
   var input = document.getElementsByTagName("input")[0];
   
@@ -28,7 +30,7 @@
         reader.readAsArrayBuffer(files[0]);
 		}
 ```
-##Or remote file
+## Or remote file
 
 ```js
 var blob = null;
