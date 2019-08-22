@@ -46,9 +46,9 @@ xhr.onload = function() {
       //Reads a vox file
       var vox = new VoxReader();
       vox.progressEvents = true;
-      vox.read(reader.result).then((data)=>{
+      vox.read(reader.result).then(data=>{
         //Builds an array of vertices and colors
-        data.voxeles.Poligonalise().then(data => {
+        data.voxeles.Poligonalise(data => {
           if(data.type === "progress"){
             //data - is an object of progress, with calculated percentages, and the total and current number of elements
           }else if(data.type === "result"){
