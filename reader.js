@@ -1,10 +1,17 @@
 
+"strict mode"
+
 class VoxReader {};
 
 (function(){
     const Default = {
         palette: new Uint8Array([255,255,255,255,255,255,204,255,255,255,153,255,255,255,102,255,255,255,51,255,255,255,0,255,255,204,255,255,255,204,204,255,255,204,153,255,255,204,102,255,255,204,51,255,255,204,0,255,255,153,255,255,255,153,204,255,255,153,153,255,255,153,102,255,255,153,51,255,255,153,0,255,255,102,255,255,255,102,204,255,255,102,153,255,255,102,102,255,255,102,51,255,255,102,0,255,255,51,255,255,255,51,204,255,255,51,153,255,255,51,102,255,255,51,51,255,255,51,0,255,255,0,255,255,255,0,204,255,255,0,153,255,255,0,102,255,255,0,51,255,255,0,0,255,204,255,255,255,204,255,204,255,204,255,153,255,204,255,102,255,204,255,51,255,204,255,0,255,204,204,255,255,204,204,204,255,204,204,153,255,204,204,102,255,204,204,51,255,204,204,0,255,204,153,255,255,204,153,204,255,204,153,153,255,204,153,102,255,204,153,51,255,204,153,0,255,204,102,255,255,204,102,204,255,204,102,153,255,204,102,102,255,204,102,51,255,204,102,0,255,204,51,255,255,204,51,204,255,204,51,153,255,204,51,102,255,204,51,51,255,204,51,0,255,204,0,255,255,204,0,204,255,204,0,153,255,204,0,102,255,204,0,51,255,204,0,0,255,153,255,255,255,153,255,204,255,153,255,153,255,153,255,102,255,153,255,51,255,153,255,0,255,153,204,255,255,153,204,204,255,153,204,153,255,153,204,102,255,153,204,51,255,153,204,0,255,153,153,255,255,153,153,204,255,153,153,153,255,153,153,102,255,153,153,51,255,153,153,0,255,153,102,255,255,153,102,204,255,153,102,153,255,153,102,102,255,153,102,51,255,153,102,0,255,153,51,255,255,153,51,204,255,153,51,153,255,153,51,102,255,153,51,51,255,153,51,0,255,153,0,255,255,153,0,204,255,153,0,153,255,153,0,102,255,153,0,51,255,153,0,0,255,102,255,255,255,102,255,204,255,102,255,153,255,102,255,102,255,102,255,51,255,102,255,0,255,102,204,255,255,102,204,204,255,102,204,153,255,102,204,102,255,102,204,51,255,102,204,0,255,102,153,255,255,102,153,204,255,102,153,153,255,102,153,102,255,102,153,51,255,102,153,0,255,102,102,255,255,102,102,204,255,102,102,153,255,102,102,102,255,102,102,51,255,102,102,0,255,102,51,255,255,102,51,204,255,102,51,153,255,102,51,102,255,102,51,51,255,102,51,0,255,102,0,255,255,102,0,204,255,102,0,153,255,102,0,102,255,102,0,51,255,102,0,0,255,51,255,255,255,51,255,204,255,51,255,153,255,51,255,102,255,51,255,51,255,51,255,0,255,51,204,255,255,51,204,204,255,51,204,153,255,51,204,102,255,51,204,51,255,51,204,0,255,51,153,255,255,51,153,204,255,51,153,153,255,51,153,102,255,51,153,51,255,51,153,0,255,51,102,255,255,51,102,204,255,51,102,153,255,51,102,102,255,51,102,51,255,51,102,0,255,51,51,255,255,51,51,204,255,51,51,153,255,51,51,102,255,51,51,51,255,51,51,0,255,51,0,255,255,51,0,204,255,51,0,153,255,51,0,102,255,51,0,51,255,51,0,0,255,0,255,255,255,0,255,204,255,0,255,153,255,0,255,102,255,0,255,51,255,0,255,0,255,0,204,255,255,0,204,204,255,0,204,153,255,0,204,102,255,0,204,51,255,0,204,0,255,0,153,255,255,0,153,204,255,0,153,153,255,0,153,102,255,0,153,51,255,0,153,0,255,0,102,255,255,0,102,204,255,0,102,153,255,0,102,102,255,0,102,51,255,0,102,0,255,0,51,255,255,0,51,204,255,0,51,153,255,0,51,102,255,0,51,51,255,0,51,0,255,0,0,255,255,0,0,204,255,0,0,153,255,0,0,102,255,0,0,51,255,238,0,0,255,221,0,0,255,187,0,0,255,170,0,0,255,136,0,0,255,119,0,0,255,85,0,0,255,68,0,0,255,34,0,0,255,17,0,0,255,0,238,0,255,0,221,0,255,0,187,0,255,0,170,0,255,0,136,0,255,0,119,0,255,0,85,0,255,0,68,0,255,0,34,0,255,0,17,0,255,0,0,238,255,0,0,221,255,0,0,187,255,0,0,170,255,0,0,136,255,0,0,119,255,0,0,85,255,0,0,68,255,0,0,34,255,0,0,17,255,238,238,238,255,221,221,221,255,187,187,187,255,170,170,170,255,136,136,136,255,119,119,119,255,85,85,85,255,68,68,68,255,34,34,34,255,17,17,17,255,0,0,0,0])
     }
+
+    var decVert = null,
+        toWords = null,
+        red = null,
+        readLength = null;
 
     // ========================= classes ========================= //
 
@@ -26,14 +33,112 @@ class VoxReader {};
         }
     }
 
+    class Voxel32Array {
+        constructor(meta){
+            this.data = [],
+            this.bitmap = null,
+            this.inited = false,
+            this.meta = meta;
+        }
+        PutVoxel(x,y,z,c){
+            if(!(x >= 0 && z >= 0 && y >= 0) || !(x < this.meta.size.x && z < this.meta.size.z && y < this.meta.size.y)){
+                throw "Out of range!";
+                return;
+            }
+
+            this.data.push(new VoxelData(x, y, z, c));
+
+            if(this.bitmap[x] === undefined)
+                this.bitmap[x] = [];
+            if(this.bitmap[x][y] === undefined)
+                this.bitmap[x][y] = [];
+
+            this.bitmap[x][y][z] = c;
+        }
+        Poligonalise(res){
+            if(window.Worker){
+                var host = new Worker(URL.createObjectURL(new Blob([`
+                    self.addEventListener('message', (e) => {
+                        (`+decVert.toString()+`)(e.data.palette, e.data.bitmap, e.data.data, e.data.offset, e.data.size, (data) => {
+                            self.postMessage({
+                                type: "result",
+                                data: data
+                            });
+                        }, (data) => {
+                            self.postMessage({
+                                type: "progress",
+                                data: data
+                            });
+                        });
+                });`])));
+
+                host.postMessage({
+                    bitmap: this.bitmap,
+                    data: this.data,
+                    size: this.meta.voxelSettings.size,
+                    offset: this.meta.voxelSettings.offset,
+                    palette: this.meta.voxelSettings.palette
+                });
+                host.onmessage = (data) => {
+                    if(data.data.type === "result"){
+                        res(data.data);
+                    }else if(data.data.type === "progress"){
+                        if(this.meta.reader.progressEvents)
+                            res(data.data);
+                    }
+                }
+            }else{
+                 decVert(this.meta.voxelSettings.palette,
+                                          this.bitmap,
+                                          this.data,
+                                          this.meta.voxelSettings.offset,
+                                          this.meta.voxelSettings.size,
+                                          (data) => {
+                                            res({
+                                                type: "result",
+                                                data: data
+                                            })
+                                          })
+            }
+        }
+    }
+
+    class DVoxMeta{
+        constructor(version, reader){
+            this.version = version || 0x0;
+            this.size=  {
+                    x: 0x0,
+                    y: 0x0,
+                    z: 0x0
+                };
+            this.voxelSettings = {
+                    size: {
+                        x: 0x1,
+                        y: 0x1,
+                        z: 0x1
+                    },
+                    offset: {
+                        x: 0x0,
+                        y: 0x0,
+                        z: 0x0
+                    },
+                    palette: Default.palette
+                };
+            this.voxeles = new Voxel32Array(this, reader);
+            this.inited = false;
+            this.chuncks = [];
+            this.reader = reader;
+        }
+    }
+
     // ======================= functions =========================== //
 
-    function decVert(palette, bitmap, data, offset, size, res, progress){
+    decVert = (palette, bitmap, data, offset, size, res, progress) => {
         var start = Date.now(),
             grid = [],
             colors = [],
             opacity_map = [],
-            color = new Uint8Array(3),
+            color = new Uint8Array(4),
             last_i = 0,
             dec = 0;
 
@@ -43,7 +148,7 @@ class VoxReader {};
             color[2] = palette[data[i].color * 4 + 2];
             color[3] = palette[data[i].color * 4 + 3];
 
-            if(progress && (dec = parseInt(100 * (i / len))) !== last_i){
+            if(progress && (dec = Math.round(100 * (i / len))) !== last_i){
                 progress({
                     per: dec,
                     index: i,
@@ -65,12 +170,12 @@ class VoxReader {};
                         offset.x + data[i].x * size.x, data[i].y * size.y + offset.y, data[i].z * size.z + offset.z
                     );
 
-                    colors.push(color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255);
+                    colors.push(color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF);
                                 
                     opacity_map.push(color[3],color[3],color[3],color[3],color[3],color[3]);
             }
@@ -87,12 +192,12 @@ class VoxReader {};
                         offset.x + data[i].x * size.x + size.x, data[i].y * size.y + size.y + offset.y, data[i].z  * size.z + offset.z
                     );
 
-                    colors.push(color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255);
+                    colors.push(color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF);
 
                     opacity_map.push(color[3],color[3],color[3],color[3],color[3],color[3]);
             }
@@ -108,12 +213,12 @@ class VoxReader {};
                         offset.x + data[i].x * size.x, data[i].y * size.y + offset.y, data[i].z * size.z + offset.z
                     );
 
-                    colors.push(color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255);
+                    colors.push(color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF);
 
                     opacity_map.push(color[3],color[3],color[3],color[3],color[3],color[3]);
             }
@@ -129,12 +234,12 @@ class VoxReader {};
                         offset.x + data[i].x * size.x, size.y + data[i].y  * size.y + offset.y, size.z + data[i].z * size.z + offset.z
                     );
 
-                    colors.push(color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255);
+                    colors.push(color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF);
 
                     opacity_map.push(color[3],color[3],color[3],color[3],color[3],color[3]);
             }
@@ -149,12 +254,12 @@ class VoxReader {};
                         offset.x + data[i].x * size.x, size.y + data[i].y * size.y + offset.y, data[i].z * size.z + offset.z
                     );
 
-                    colors.push(color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255);
+                    colors.push(color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF);
 
                     opacity_map.push(color[3],color[3],color[3],color[3],color[3],color[3]);
             }
@@ -169,12 +274,12 @@ class VoxReader {};
                         offset.x + data[i].x * size.x,  data[i].y * size.y + offset.y,  data[i].z * size.z + size.z + offset.z
                     );
 
-                    colors.push(color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255,
-                                color[0] / 255, color[1] / 255, color[2] / 255);
+                    colors.push(color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF,
+                                color[0] / 0xFF, color[1] / 0xFF, color[2] / 0xFF);
 
                     opacity_map.push(color[3],color[3],color[3],color[3],color[3],color[3]);
             }
@@ -185,11 +290,12 @@ class VoxReader {};
             geometry: new Float32Array(grid),
             colors: new Float32Array(colors),
             opacity: opacity_map,
+            voxeles: data.length,
             ticks: (Date.now() - start)
         });
     }
 
-    function toWords(buffer){
+    toWords = (buffer) => {
         var ret = "";
         for(var i = 0;i < buffer.length;i++){
             ret += String.fromCharCode(buffer[i]);
@@ -197,7 +303,7 @@ class VoxReader {};
         return ret;
     }
     
-    function red(array, s){
+    red = (array, s) => {
         var subarray = [];
         for (let i = 0; i <Math.ceil(array.length/s); i++){
             subarray[i] = array.slice((i*s), (i*s) + s);
@@ -205,7 +311,7 @@ class VoxReader {};
         return subarray;
     }
 
-    function readLength(array){
+    readLength = (array) => {
         var buffer = [],
             item = null;
         for(var i = 0;i < array.length;i++){
@@ -217,25 +323,20 @@ class VoxReader {};
 
     // ===================== body ============================= //
 
-    var host = window.Worker !== undefined ? new Worker(URL.createObjectURL(new Blob([`
-        self.addEventListener('message', (e) => {
-            (`+decVert.toString()+`)(e.data.palette, e.data.bitmap, e.data.data, e.data.offset, e.data.size, (data) => {
-                self.postMessage({
-                    type: "result",
-                    data: data
-                });
-            }, (data) => {
-                self.postMessage({
-                    type: "progress",
-                    data: data
-                });
-            });
-        });
-    `]))) : false;
 
+    VoxReader.prototype.new = (x, y, z) => {
+        var meta = new DVoxMeta(150, this);
+        meta.size.x = x;
+        meta.size.y = y;
+        meta.size.z = z;
+        meta.offset.x = x/2;
+        meta.offset.y = y/2;
+        meta.offset.z = z/2;
+        return meta;
+    }
 
     VoxReader.prototype.SpecialBlockLength = {
-        RGBA: 1024
+        RGBA: 0x400
     }
 
     /**
@@ -271,57 +372,11 @@ class VoxReader {};
             if(result.slice(0, 4).join("") !== "86798832"){
                 throw "Is not a VOX signature!"
             }else {
-                var meta = {
-                        version: 0x0,
-                        size: {
-                            x: 0x0,
-                            y: 0x0,
-                            z: 0x0
-                        },
-                        voxelSettings: {
-                            size: {
-                                x: 1,
-                                y: 1,
-                                z: 1
-                            },
-                            offset: {
-                                x: 0,
-                                y: 0,
-                                z: 0
-                            },
-                            palette: Default.palette
-                        },
-                        voxeles: {
-                            data: [],
-                            bitmap: null,
-                            Poligonalise: (host ? async () => new Promise((res, rej) => {
-                                host.postMessage({
-                                    bitmap: meta.voxeles.bitmap,
-                                    data: meta.voxeles.data,
-                                    size: meta.voxelSettings.size,
-                                    offset: meta.voxelSettings.offset,
-                                    palette: meta.voxelSettings.palette
-                                });
-                                host.onmessage = (data) => {
-                                    if(data.data.type === "result"){
-                                        res(data.data.data);
-                                    }else if(data.data.type === "progress"){
-                                        if(this.progressEvents)
-                                            res(data.data.data);
-                                    }
-                                }
-                            }) : async () => new Promise((res, rej) => decVert( meta.voxelSettings.palette,
-                                                                                meta.voxeles.bitmap,
-                                                                                meta.voxeles.data,
-                                                                                meta.voxelSettings.offset,
-                                                                                meta.voxelSettings.size,
-                                                                                res)
-                                                                                ))
-                        },
-                        chuncks: []
-                    },
-                b_id,content,children,read_content;
-
+                var meta = new DVoxMeta(readLength(result.slice(4, 8)), this),
+                    b_id = null,
+                    content = null,
+                    children = null,
+                    read_content = null;
 
                 for(var i = 8;i < result.length;){
                     b_id = toWords(result.slice(i, i + 4));
@@ -335,44 +390,47 @@ class VoxReader {};
 
                     switch(b_id){
                         case "SIZE":
-                            var size = red(read_content, 4);
-                            meta.size.x = this.invertVertices.x === 0 ? readLength(size[0]) : (this.invertVertices.x === 1 ? readLength(size[1]) : readLength(size[2]));
-                            meta.size.y = this.invertVertices.y === 0 ? readLength(size[0]) : (this.invertVertices.y === 1 ? readLength(size[1]) : readLength(size[2]));;
-                            meta.size.z = this.invertVertices.z === 0 ? readLength(size[0]) : (this.invertVertices.z === 1 ? readLength(size[1]) : readLength(size[2]));;
-                            meta.voxelSettings.offset = {
-                                x: -(meta.size.x / 2),
-                                y: -(meta.size.y / 2),
-                                z: -(meta.size.z / 2)
+                            if(!meta.inited){
+                                var size = red(read_content, 4);
+                                meta.size.x = this.invertVertices.x === 0 ? readLength(size[0]) : (this.invertVertices.x === 1 ? readLength(size[1]) : readLength(size[2]));
+                                meta.size.y = this.invertVertices.y === 0 ? readLength(size[0]) : (this.invertVertices.y === 1 ? readLength(size[1]) : readLength(size[2]));;
+                                meta.size.z = this.invertVertices.z === 0 ? readLength(size[0]) : (this.invertVertices.z === 1 ? readLength(size[1]) : readLength(size[2]));;
+                                meta.voxelSettings.offset = {
+                                    x: -(meta.size.x / 2),
+                                    y: -(meta.size.y / 2),
+                                    z: -(meta.size.z / 2)
+                                }
+                                meta.voxeles.bitmap = [[]];
+                                meta.inited = true;
                             }
-                            meta.voxeles.bitmap = [[]]
                         continue;
                         case "XYZI":
-                            var buffer = [];
-                            var j_b = 0,
-                                x = 0,
-                                y = 0,
-                                z = 0,
-                                c = 0;
+                            if(!meta.voxeles.inited ){
+                                var x = 0,
+                                    y = 0,
+                                    z = 0,
+                                    c = 0;
 
-                            for(var j = 0;j < read_content.length;j+=4){
-                                x = this.invertVertices.x === 0 ? read_content[j] : (this.invertVertices.x === 1 ? read_content[j+1] : read_content[j+2]);
-                                y = this.invertVertices.y === 0 ? read_content[j] : (this.invertVertices.y === 1 ? read_content[j+1] : read_content[j+2]);
-                                z = this.invertVertices.z === 0 ? read_content[j] : (this.invertVertices.z === 1 ? read_content[j+1] : read_content[j+2]);
-                                c = read_content[j+3];
+                                for(var j = 0;j < read_content.length;j+=4){
+                                    x = this.invertVertices.x === 0 ? read_content[j] : (this.invertVertices.x === 1 ? read_content[j+1] : read_content[j+2]);
+                                    y = this.invertVertices.y === 0 ? read_content[j] : (this.invertVertices.y === 1 ? read_content[j+1] : read_content[j+2]);
+                                    z = this.invertVertices.z === 0 ? read_content[j] : (this.invertVertices.z === 1 ? read_content[j+1] : read_content[j+2]);
+                                    c = read_content[j+3];
 
-                                if(!(x >= 0 && z >= 0 && y >= 0) || !(x < meta.size.x && z < meta.size.z && y < meta.size.y))
-                                    continue;
-                                buffer.push(new VoxelData(x, y, z, c));
+                                    if(!(x >= 0 && z >= 0 && y >= 0) || !(x < meta.size.x && z < meta.size.z && y < meta.size.y))
+                                        continue;
+                                        meta.voxeles.data.push(new VoxelData(x, y, z, c));
 
-                                if(meta.voxeles.bitmap[x] === undefined)
-                                    meta.voxeles.bitmap[x] = [];
-                                if(meta.voxeles.bitmap[x][y] === undefined)
-                                    meta.voxeles.bitmap[x][y] = [];
+                                    if(meta.voxeles.bitmap[x] === undefined)
+                                        meta.voxeles.bitmap[x] = [];
+                                    if(meta.voxeles.bitmap[x][y] === undefined)
+                                        meta.voxeles.bitmap[x][y] = [];
 
-                                meta.voxeles.bitmap[x][y][z] = c;
+                                    meta.voxeles.bitmap[x][y][z] = c;
+                                }
+
+                                meta.voxeles.inited = true;
                             }
-
-                            meta.voxeles.data = meta.voxeles.data.concat(buffer);
                         break;
                         case "RGBA":
                             if(!this.useDefaultPalette){
@@ -382,8 +440,9 @@ class VoxReader {};
                         default:
                         break;
                     }
+
                 };
-                
+
                 resolve(meta);
             }
         })
