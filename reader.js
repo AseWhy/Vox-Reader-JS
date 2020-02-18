@@ -1,6 +1,10 @@
 
 "strict mode"
 
+/*
+    GitHub: https://github.com/AseWhy/Vox-Reader-JS
+*/
+
 class VoxReader {};
 
 (function(){
@@ -8,7 +12,7 @@ class VoxReader {};
         palette: new Uint8Array([255,255,255,255,255,255,204,255,255,255,153,255,255,255,102,255,255,255,51,255,255,255,0,255,255,204,255,255,255,204,204,255,255,204,153,255,255,204,102,255,255,204,51,255,255,204,0,255,255,153,255,255,255,153,204,255,255,153,153,255,255,153,102,255,255,153,51,255,255,153,0,255,255,102,255,255,255,102,204,255,255,102,153,255,255,102,102,255,255,102,51,255,255,102,0,255,255,51,255,255,255,51,204,255,255,51,153,255,255,51,102,255,255,51,51,255,255,51,0,255,255,0,255,255,255,0,204,255,255,0,153,255,255,0,102,255,255,0,51,255,255,0,0,255,204,255,255,255,204,255,204,255,204,255,153,255,204,255,102,255,204,255,51,255,204,255,0,255,204,204,255,255,204,204,204,255,204,204,153,255,204,204,102,255,204,204,51,255,204,204,0,255,204,153,255,255,204,153,204,255,204,153,153,255,204,153,102,255,204,153,51,255,204,153,0,255,204,102,255,255,204,102,204,255,204,102,153,255,204,102,102,255,204,102,51,255,204,102,0,255,204,51,255,255,204,51,204,255,204,51,153,255,204,51,102,255,204,51,51,255,204,51,0,255,204,0,255,255,204,0,204,255,204,0,153,255,204,0,102,255,204,0,51,255,204,0,0,255,153,255,255,255,153,255,204,255,153,255,153,255,153,255,102,255,153,255,51,255,153,255,0,255,153,204,255,255,153,204,204,255,153,204,153,255,153,204,102,255,153,204,51,255,153,204,0,255,153,153,255,255,153,153,204,255,153,153,153,255,153,153,102,255,153,153,51,255,153,153,0,255,153,102,255,255,153,102,204,255,153,102,153,255,153,102,102,255,153,102,51,255,153,102,0,255,153,51,255,255,153,51,204,255,153,51,153,255,153,51,102,255,153,51,51,255,153,51,0,255,153,0,255,255,153,0,204,255,153,0,153,255,153,0,102,255,153,0,51,255,153,0,0,255,102,255,255,255,102,255,204,255,102,255,153,255,102,255,102,255,102,255,51,255,102,255,0,255,102,204,255,255,102,204,204,255,102,204,153,255,102,204,102,255,102,204,51,255,102,204,0,255,102,153,255,255,102,153,204,255,102,153,153,255,102,153,102,255,102,153,51,255,102,153,0,255,102,102,255,255,102,102,204,255,102,102,153,255,102,102,102,255,102,102,51,255,102,102,0,255,102,51,255,255,102,51,204,255,102,51,153,255,102,51,102,255,102,51,51,255,102,51,0,255,102,0,255,255,102,0,204,255,102,0,153,255,102,0,102,255,102,0,51,255,102,0,0,255,51,255,255,255,51,255,204,255,51,255,153,255,51,255,102,255,51,255,51,255,51,255,0,255,51,204,255,255,51,204,204,255,51,204,153,255,51,204,102,255,51,204,51,255,51,204,0,255,51,153,255,255,51,153,204,255,51,153,153,255,51,153,102,255,51,153,51,255,51,153,0,255,51,102,255,255,51,102,204,255,51,102,153,255,51,102,102,255,51,102,51,255,51,102,0,255,51,51,255,255,51,51,204,255,51,51,153,255,51,51,102,255,51,51,51,255,51,51,0,255,51,0,255,255,51,0,204,255,51,0,153,255,51,0,102,255,51,0,51,255,51,0,0,255,0,255,255,255,0,255,204,255,0,255,153,255,0,255,102,255,0,255,51,255,0,255,0,255,0,204,255,255,0,204,204,255,0,204,153,255,0,204,102,255,0,204,51,255,0,204,0,255,0,153,255,255,0,153,204,255,0,153,153,255,0,153,102,255,0,153,51,255,0,153,0,255,0,102,255,255,0,102,204,255,0,102,153,255,0,102,102,255,0,102,51,255,0,102,0,255,0,51,255,255,0,51,204,255,0,51,153,255,0,51,102,255,0,51,51,255,0,51,0,255,0,0,255,255,0,0,204,255,0,0,153,255,0,0,102,255,0,0,51,255,238,0,0,255,221,0,0,255,187,0,0,255,170,0,0,255,136,0,0,255,119,0,0,255,85,0,0,255,68,0,0,255,34,0,0,255,17,0,0,255,0,238,0,255,0,221,0,255,0,187,0,255,0,170,0,255,0,136,0,255,0,119,0,255,0,85,0,255,0,68,0,255,0,34,0,255,0,17,0,255,0,0,238,255,0,0,221,255,0,0,187,255,0,0,170,255,0,0,136,255,0,0,119,255,0,0,85,255,0,0,68,255,0,0,34,255,0,0,17,255,238,238,238,255,221,221,221,255,187,187,187,255,170,170,170,255,136,136,136,255,119,119,119,255,85,85,85,255,68,68,68,255,34,34,34,255,17,17,17,255,0,0,0,0])
     }
 
-    var decVert = null,
+    let decVert = null,
         toWords = null,
         red = null,
         readLength = null;
@@ -57,7 +61,7 @@ class VoxReader {};
         }
         Poligonalise(res){
             if(window.Worker){
-                var host = new Worker(URL.createObjectURL(new Blob([`
+                let host = new Worker(URL.createObjectURL(new Blob([`
                     self.addEventListener('message', (e) => {
                         (`+decVert.toString()+`)(e.data.palette, e.data.bitmap, e.data.data, e.data.offset, e.data.size, (data) => {
                             self.postMessage({
@@ -134,7 +138,7 @@ class VoxReader {};
     // ======================= functions =========================== //
 
     decVert = (palette, bitmap, data, offset, size, res, progress) => {
-        var start = Date.now(),
+        let start = Date.now(),
             grid = [],
             colors = [],
             opacity_map = [],
@@ -142,7 +146,7 @@ class VoxReader {};
             last_i = 0,
             dec = 0;
 
-        for(var i = 0, len = data.length;i < len;i++){
+        for(let i = 0, len = data.length;i < len;i++){
             color[0] = palette[data[i].color * 4];
             color[1] = palette[data[i].color * 4 + 1];
             color[2] = palette[data[i].color * 4 + 2];
@@ -296,15 +300,15 @@ class VoxReader {};
     }
 
     toWords = (buffer) => {
-        var ret = "";
-        for(var i = 0;i < buffer.length;i++){
+        let ret = "";
+        for(let i = 0;i < buffer.length;i++){
             ret += String.fromCharCode(buffer[i]);
         }
         return ret;
     }
     
     red = (array, s) => {
-        var subarray = [];
+        let subarray = [];
         for (let i = 0; i <Math.ceil(array.length/s); i++){
             subarray[i] = array.slice((i*s), (i*s) + s);
         }
@@ -312,9 +316,9 @@ class VoxReader {};
     }
 
     readLength = (array) => {
-        var buffer = [],
+        let buffer = [],
             item = null;
-        for(var i = 0;i < array.length;i++){
+        for(let i = 0;i < array.length;i++){
             item = array[array.length - i - 1].toString(16);
             buffer.push(item.length < 2 ? "0" + item : item);
         }
@@ -325,7 +329,7 @@ class VoxReader {};
 
 
     VoxReader.prototype.new = (x, y, z) => {
-        var meta = new DVoxMeta(150, this);
+        let meta = new DVoxMeta(150, this);
         meta.size.x = x;
         meta.size.y = y;
         meta.size.z = z;
@@ -372,13 +376,13 @@ class VoxReader {};
             if(result.slice(0, 4).join("") !== "86798832"){
                 throw "Is not a VOX signature!"
             }else {
-                var meta = new DVoxMeta(readLength(result.slice(4, 8)), this),
+                let meta = new DVoxMeta(readLength(result.slice(4, 8)), this),
                     b_id = null,
                     content = null,
                     children = null,
                     read_content = null;
 
-                for(var i = 8;i < result.length;){
+                for(let i = 8;i < result.length;){
                     b_id = toWords(result.slice(i, i + 4));
                     content = this.SpecialBlockLength[b_id] || readLength(result.slice(i + 4, i + 8));
                     children = readLength(result.slice(i + 8, i + 12));
@@ -391,7 +395,7 @@ class VoxReader {};
                     switch(b_id){
                         case "SIZE":
                             if(!meta.inited){
-                                var size = red(read_content, 4);
+                                let size = red(read_content, 4);
                                 meta.size.x = this.invertVertices.x === 0 ? readLength(size[0]) : (this.invertVertices.x === 1 ? readLength(size[1]) : readLength(size[2]));
                                 meta.size.y = this.invertVertices.y === 0 ? readLength(size[0]) : (this.invertVertices.y === 1 ? readLength(size[1]) : readLength(size[2]));;
                                 meta.size.z = this.invertVertices.z === 0 ? readLength(size[0]) : (this.invertVertices.z === 1 ? readLength(size[1]) : readLength(size[2]));;
@@ -406,12 +410,12 @@ class VoxReader {};
                         continue;
                         case "XYZI":
                             if(!meta.voxeles.inited ){
-                                var x = 0,
+                                let x = 0,
                                     y = 0,
                                     z = 0,
                                     c = 0;
 
-                                for(var j = 0;j < read_content.length;j+=4){
+                                for(let j = 0;j < read_content.length;j+=4){
                                     x = this.invertVertices.x === 0 ? read_content[j] : (this.invertVertices.x === 1 ? read_content[j+1] : read_content[j+2]);
                                     y = this.invertVertices.y === 0 ? read_content[j] : (this.invertVertices.y === 1 ? read_content[j+1] : read_content[j+2]);
                                     z = this.invertVertices.z === 0 ? read_content[j] : (this.invertVertices.z === 1 ? read_content[j+1] : read_content[j+2]);
